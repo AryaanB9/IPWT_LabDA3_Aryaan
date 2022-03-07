@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="Author" content="ARYAAN BHASKAR 20BCT0278">
+    <title>MOVIE RATINGS</title>
+
+    <!-- LINKS -->
+    <link rel="stylesheet" href="css/styles2.css">
+    <link rel="icon" href="images/film-reel.png">
+
+    <!-- SCRIPTS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- jQuery -->
+    <script>
+        $(document).ready(function () {
+        var numberRows = 0;
+        var mArray = [];
+        var rArray = [];
+
+        // Adding a Row for Name and Rating using button
+        $('#addBtn').on('click', function () {
+            var movie = $("#movieName").val();
+            mArray.push(movie);
+            var rating = $("#rating").val();
+            rArray.push(rating);
+
+            $('#tbody').append(`<tr id="R${++numberRows}">
+                <td class="row-index tableContent">
+                <p>${movie}</p>
+                </td>
+                <td class="row-index1 tableContent">
+                <p>${rating}</p>
+                </td>
+                <td class="tableContent">
+                    <button class="btn btn-danger remove"
+                    type="button">Remove</button>
+                    </td>
+                </tr>`);
+        });
+
+        // To remove a row using button
+        $('#tbody').on('click', '.remove', function () {
+            // Getting all the rows next to the row which is clicked
+            var child = $(this).closest('tr').nextAll();
+            child.each(function () {
+            var id = $(this).attr('id');
+            var idx = $(this).children('.row-index').children('p');
+            var dig = parseInt(id.substring(1));
+
+            mArray[dig-2] = mArray[dig-1];
+            newmovie = mArray[dig-2];
+
+            idx.html(`${newmovie}`);
+            $(this).attr('id', `R${dig - 1}`);
+        });
+
+        // Removing the current row.
+        $(this).closest('tr').remove();
+        numberRows--;
+      });
+    });
+
+    function movieSort(){
+        var movieSortTable = $('#movieTable');
+        var tbodySortTable = $('#tbody');
+        tbodySortTable.find('tr').sort(function(a, b){
+            if($('#movieOrder').val()=='asc'){
+                return $('td:first', a).text().localeCompare($('td:first', b).text());
+            }
+            else{
+                return $('td:first', b).text().localeCompare($('td:first', a).text());
+            }
+        }).appendTo(tbodySortTable);
+
+        var sort_order=$('#movieOrder').val();
+        if(sort_order=="asc"){
+        document.getElementById("movieOrder").value="desc";
+        }
+        if(sort_order=="desc"){
+        document.getElementById("movieOrder").value="asc";
+        }
+    }
+
+    function ratingsSort(){
+        var ratingSortTable=$('#movieTable');
+        var tbodyRatingSortTable =$('#tbody');
+
+        tbodyRatingSortTable.find('tr').sort(function(a, b){
+            if($('#ratingsOrder').val()=='asc'){
+                return $('td:nth-child(2)', a).text().localeCompare($('td:nth-child(2)', b).text());
+            }
+            else{
+                return $('td:nth-child(2)', b).text().localeCompare($('td:nth-child(2)', a).text());
+            }
+        }).appendTo(tbodyRatingSortTable);
+
+        var ratingSort_order=$('#ratingsOrder').val();
+        if(ratingSort_order=="asc"){
+            document.getElementById("ratingsOrder").value="desc";
+        }
+        if(ratingSort_order=="desc"){
+            document.getElementById("ratingsOrder").value="asc";
+        }
+    }
+  </script>
+</head>
+
+<body>
+  <div>    
+    <center>
+        <br>
+        <h1>Movie Ratings</h1>
+        <br>
+        <div class="header">
+            <label for="movieName">Title</label>
+            <input type="text" id="movieName" placeholder="Movie Name">
+            <label for="rating">Rating</label>
+            <input type="text" id="rating" placeholder="Movie Rating [0.0 to 10.0]" size="23">
+            <button class="btn btn-sm btn-primary" id="addBtn" type="button">Add Movie</button>
+        </div>
+        <br>
+        <div>
+            <table class="movieTable" id="movieTable">
+                <thead>
+                    <tr>
+                        <th class="tableContent">Title</th>
+                        <th class="tableContent">Rating</th>
+                        <th class="tableContent">Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+        </div>
+    
+        <input type="hidden" id="movieOrder" value="asc">
+        <input type="hidden" id="ratingsOrder" value="asc">
+        <br><br>
+        <div class="sortBtn">
+            <button class="btn" id="movieSortBtn" onclick="movieSort()">Sort by Movie Names</button>
+            <button class="btn" id="ratingSortBtn" onclick="ratingsSort()">Sort by Ratings</button>
+        </div>
+    </center>
+</body>
+</html>

@@ -1,0 +1,59 @@
+/**************** TAG SELECTORS ****************/
+
+body {
+    background-color: #1C658C;
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 0;
+    color: white;
+}
+
+button {
+    width: 25%;
+    line-height: 200%;
+    border-radius: 10px;
+    background-color: #EEEEEE;
+}
+
+h1 {
+    margin-top: 2%;
+}
+
+p {
+    text-align: justify;
+}
+
+table {
+    text-align: left;
+    margin: auto;
+    line-height: 40px;
+    background-color: #398AB9;
+    border-collapse: collapse;
+    border-radius: 7%;
+}
+
+tr:hover {
+    background-color: #5D8BF4;
+    
+}
+
+td {
+    padding: 10px 14px 10px 16px;
+}
+
+/**************** CLASS SELECTORS ****************/
+
+.about {
+    display: inline-block;
+    width: 50%;
+    padding: 0 15px 0 15px;
+    text-align: center;
+}
+
+.form {
+    display: inline-block;
+    text-align: center;
+    width: 45%;
+    margin-top: 2%;
+    vertical-align: top;
+}

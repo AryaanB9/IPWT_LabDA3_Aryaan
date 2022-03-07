@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="Author" content="ARYAAN BHASKAR 20BCT0278">
+
+    <title>HOSPITAL</title>
+
+    <!-- LINKS -->
+    <link rel="icon" href="images/favicon-32x32.png">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+
+<body>
+    <!-- JavaScript-->
+    <script src="js/q1.js"></script>
+    <div class="master">
+        <div class="about">
+            <center>
+                <h1>Sunshine Hospital</h1>
+            </center>
+            <p>
+                Sunshine Hospital has been set up to offer qualitative care to all its patients in a patient-friendly environment with a focus on clinical excellence, patients’ safety & dignity, transparency & affordability and accessibility of quality care to every patient.
+                <br><br>Since its inception, Sunshine hospital has been offering world-class treatment and facilities to patients with compassion, teamwork, transparency and process-driven approach.
+            </p>
+            <center>
+                <img src="images/hospital.jpg" alt="Hospital Image" width="75%">
+            </center>
+        </div>
+    
+        <div class="form">
+            <h2>Book an Appointment</h2>
+            <form>
+                <table>
+                    <tr>
+                        <td><label for="name1">NAME</label></td>
+                        <td><input type="text" id="name1" autofocus="true" placeholder="Enter Name"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="age">AGE</label></td>
+                        <td><input type="text" id="age" placeholder="Enter your Age"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="gender1">GENDER</label></td>
+                        <td>
+                            <input type="radio" name="gender1" value="m">Male
+                            <input type="radio" name="gender1" value="f">Female
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="visits">NO. OF VISITS</label></td>
+                        <td><input type="number" id="visits"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="date">APPOINTMENT DATE</label></td>
+                        <td><input type="date" id="appdate"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="cars">DEPARTMENT</label></td>
+                        <td>
+                            <select name="dept" id="dept">
+                                <option>None</option>
+                                <option value="Pa">Paediatrician</option>
+                                <option value="Op">Opthalmology</option>
+                                <option value="Ca">Caridac</option>
+                                <option value="De">Dental</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <button type="button" onclick="validateForm()">Book Appointment</button>
+            </form>
+            <center>
+                <p id="err1" style="text-align: center;"></p>
+            </center>
+        </div>
+    </div>
+</body>
+</html>
